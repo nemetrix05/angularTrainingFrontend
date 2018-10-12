@@ -1,0 +1,71 @@
+<h2>
+    {{tittle}}
+</h2>
+<hr>
+
+<!--Creacion de formularios en ANGULAR
+1. En la etiqueta form, generamos #nombrecualquiera="ngForm". Para convertir el elemento en un formulario Angular
+
+2. Usamos la directiva (ngSubmit) para enviar los datos al componente
+
+3. Esa directiva llama un metodo en el componente el cual se encarga de recibir los datos
+-->
+
+<!-- Para limpiar el formulario luego de enviar, usamos nombreformulario.reset(); separamos de onsubmit  con ;-->
+<form #formbasic="ngForm" (ngSubmit)="onSubmit(); formbasic.reset();">
+    <fieldset>
+        <label>Nombre:</label>
+        <!--En cada campo del form debe ir:
+        - name
+        - #nombredelname="ngModel" > para convertir a formulario angular
+        - [(ngModel)] = "nombrepropiedadobjeto.campodelmodelo"
+        -->
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="front.nombre" required>
+        <!--
+            Validaciones con del campo
+            - Usamos la directiva *ngIf
+            - nombrecampo.touched = Si el campo ha sido editado
+            - !nombrecampo.valid = No es valido, muestre el mensaje
+        -->
+        <span [style.color]="!nombre.valid ? 'red' : 'black'" *ngIf="nombre.touched && !nombre.valid">
+            <strong>Por favor llene el campo Nombre</strong>
+        </span>
+    </fieldset>
+
+    <fieldset>
+        <label>Teléfono:</label>
+        <!-- Se puede validar con patterns los campos
+            pattern="tipo"
+            [a-zA-Z#]+ =  el mas en lo ultimo quiere decir que sea indefinido
+        -->
+        <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="front.telefono" pattern="[a-zA-Z#]+" required>
+        <span [style.color]="!telefono.valid ? 'red' : 'black'" *ngIf="telefono.touched && !telefono.valid">
+            <strong>Por favor llene el campo Telefono</strong>
+        </span>
+    </fieldset>   
+    
+    <fieldset>
+        <label>Mensaje:</label>
+        <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="front.mensaje" required></textarea>
+        <span [style.color]="!mensaje.valid ? 'red' : 'black'" *ngIf="mensaje.touched && !mensaje.valid">
+            <strong>Por favor escriba el mensaje</strong>
+        </span>        
+    </fieldset>      
+    
+    <!-- para evitar que el formulario envie sin validar todos los campos usamos:
+    1. [disabled] = "!formbasic.form.valid" / Quiere decir que si no esta valido el formulario, tomamos primero el nombre del formulario +  form + valid
+    -->
+    <p><input type="submit" value="Enviar" [disabled]="!formbasic.form.valid"></p>
+
+</form>
+
+<hr>
+
+<h3>Lista de Items Form</h3>
+
+<ul>
+    <!-- Sacar de cada array un objeto forModel-->
+    <li *ngFor="let formModel of lista">
+        {{formModel.nombre}} - {{formModel.telefono}} - {{formModel.mensaje}}
+    </li>
+</ul>

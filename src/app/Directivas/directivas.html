@@ -1,0 +1,20 @@
+<!--DIRECTIVAS
+1. Son pequeñas funcionalidades que se aplican como atributo a la vista
+2. El atributo *ngIf: Es equivalente a decir if() en Javascript. Recibe una condicion y ejecuta de acuerdo al valor. Luego entre las comillas llama la propiedad.
+-->
+
+<h2>Equipos</h2>
+
+<ul>
+    <!--Se define la condicion con las propiedades recibidas
+    1. Para hacer un evento como onclic(), se define en angular asi (click) = "valor"
+    2. Directiva (click) y directiva *ngIf
+    -->
+    <li><button (click)="cambioTeam('Bayer')" >Quitar este</button></li>
+    <li><button (click)="cambioTeam('Real madrid')" >Mostrar este</button></li>
+    <li *ngIf="Equipo1 == 'Real madrid'">
+        Nombre de Equipo: {{Equipo1}}<br>
+        Titulos: {{Titulos1}}
+    </li>
+
+</ul>

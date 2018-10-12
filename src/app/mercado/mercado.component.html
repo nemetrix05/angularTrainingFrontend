@@ -1,0 +1,24 @@
+<h1 *ngIf="Tituloseccion">{{Tituloseccion}}</h1>
+<hr>
+
+<!-- se crea el input y el boton para añadir elementos
+usando el two ways enviamos la propiedad que se escriba como parametro al servicion que agrega un nuevo elemento al Array
+-->
+<input type="text" placeholder="Escriba el producto" [(ngModel)]="new_food">
+<button type="button" (click)="save_food()">Agregar</button>
+
+<p *ngIf="new_food">El producto seleccionado es: <strong>{{new_food}}</strong></p>
+
+<!--Se hace un for para obtener todos los items de la array definida en el servicio-->
+<ul>
+    <!-- en for el valor que va en let, simula un elemento de una array, no es una propiedad definida, en resumen es como decir saqueme cada string de la siqguiente array-->
+
+    <!--Para poder eliminar un elemento debemos obtener su indice con; i = index en el for-->
+    <li *ngFor="let comida of list_food; let i = index">
+        {{i}} {{comida}}
+        <!--dentro del for ponemos un boton que llamara un metodo del servicio que eliminara el item-->
+
+        <!--Luego pasamos el indice al metodo que elimina-->
+        <button type="button" (click)="delete_food(i)">Eliminar</button>
+    </li>
+</ul>

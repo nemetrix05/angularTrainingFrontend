@@ -1,20 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
+<h1>{{title}}</h1>
+<!--Menu de Navegacion
+1. Definimos la lista
+2. Usamos la directiva [routerLink]="['pathdelcomponente - definido en app.routing.ts']"
+3. Para marcar o activar los elementos del menu, usamos la directiva [routerLinkActive]="['nombredeclase']"
+-->
+
+<ul [ngClass]="['listnav']">
+    <li><a [routerLink]="['/home-page']" [routerLinkActive]="['actived']">HOME PAGE</a></li>
+    <li><a [routerLink]="['/nosotros-page']" [routerLinkActive]="['actived']">NOSOTROS PAGE</a></li>
+    <li><a [routerLink]="['/mercado-page']" [routerLinkActive]="['actived']">MERCADO</a></li>   
+    <li><a [routerLink]="['/pipes']" [routerLinkActive]="['actived']">PIPES</a></li>   
+    <li><a [routerLink]="['/formulario']" [routerLinkActive]="['actived']">FORMULARIO</a></li>  
+    <li><a [routerLink]="['/ngtemplate']" [routerLinkActive]="['actived']">NG TEMPLATE</a></li>      
 </ul>
 
+
+<!--Para que funcione el router con los componentes, debemos llamar una etiqueta especial llamada: <router-outlet></router-outlet>-->
+<router-outlet></router-outlet>

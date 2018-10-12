@@ -1,0 +1,105 @@
+<h3 style="color:red;">NGCLASS</h3>
+
+<p [ngClass]="['definida']">
+    Este elemento usa la directiva ng definida
+</p>
+
+<!--Defuni una clase: esta se muestra si el atributo es de color pink-->
+<p [ngClass]="{
+    verdeclase: color_state == 'pink'
+}">
+    Este elemento usa la directiva ng bindeando una clase
+</p>
+
+
+<p [class.enatt]="color_state == 'black'">
+    Este elemento usa la directiva class en atributo
+</p>
+
+<!-- Aqui dice si la propiedad es gris, a esa propiedad agregar el valor uppercase si no se le da otro valor-->
+
+<p [style.textTransform]="color_state == 'gray' ? 'uppercase' : 'lowercase'">
+    Este elemento usa la directiva class en atributo
+</p>
+
+<hr>
+
+
+<!--Uso de la TWO WAYS DATA BINDING
+    1. Importaamos la clase de angular en el app.module.ts
+    2. creamos la propiedad y le aplicamos el data binding
+-->
+<h2 style="color:green;">TWO WAYS DATA BINDING</h2>
+
+<!--Con el [{ngModel}]="propiedad de la clase"  
+Le decimos angular que lo que se escriba en ese cambio cambiara el 
+valor tanto en la vista como en la clase del componente, PROGRAMACION REACTIVA!!
+-->
+<input type="text" [(ngModel)]="color_state" />
+
+<button (click)="ChangeTon()">Mostrar color en consola</button>
+
+<div [ngStyle]="{
+    'background': color_state, 
+    'width':'200px', 
+    'height':'200px',
+    'margin':'40px 0'
+    }">
+</div>
+
+<hr>
+
+<!--Uso de la directiva for en Angular-->
+<hr>
+
+<h2 style="color:red;">DIRECTIVA NGSWITCH & NGSTYLE</h2>
+
+<!--
+    1. Definimos el switch con el [ngSwitch]="nombrepropiedadaverficar"
+    2. Con *ngSwitchCase="'aquivaelvalor'". definimos en caso de que el valor sea? muestre esto
+    3. Con [ngStyle] defimos estilos css en linea pero con los valores de las propiedades de la clase la sintaxis es: [ngStyle]="{cada propiedad se define con comillas ej: 'color': si no es propiedad 'red'. separon con coma como un objeto cada propiedad.}"
+-->
+
+<ul [ngSwitch]="fuente">
+    <li *ngSwitchCase="'30px'" [ngStyle]="{
+    'font-size':fuente, 
+    'color':'gray', 
+    'text-decoration':'underline'
+    }">
+        El tamaño de la fuente actual es de {{fuente}}
+    </li>
+    
+    <li *ngSwitchCase="'50px'" [ngStyle]="{
+        'font-size':fuente, 
+        'color':'#ccc', 
+        'text-decoration':'underline'
+        }">
+            El tamaño de la fuente actual es de {{fuente}}
+    </li>
+
+</ul>
+
+
+
+<hr>
+
+<h2 style="color:aquamarine;">DIRECTIVA NGFOR</h2>
+
+<ul>
+    <!--
+        1. Con *ngFor recorremos los elementos carsInfo que estan dentro de la Array Inventario y la replicamos hasta que no quede ningun objeto en el array
+
+        2. Para saber el indice de cada elemento del Array
+        let i = index definimos la variable i y le asignamos valor index para saber la pocision dentro de la array.
+
+        {{i}} con esto llamamos el indice
+
+    -->
+    <li *ngFor="let carsInfo of inventario; let i = index">
+        <h2>Detalles del Vehiculo {{i+1}}</h2>
+        <p>Marca: {{carsInfo.marca}}</p>
+        <p>Año: {{carsInfo.year}}</p>
+        <p>Precio: ${{carsInfo.precio}} US</p>
+    </li>
+</ul>
+

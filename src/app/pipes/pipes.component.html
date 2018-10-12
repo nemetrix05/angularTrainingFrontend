@@ -1,0 +1,30 @@
+<!--PIPES
+1. Las pipes son funciones extra que se usan en las plantillas, tienen com objeto aplicar formato a un tipo de propiedad
+-->
+<h2>{{titulo}}</h2>
+<hr>
+<h3 [style.color]="titulo == 'TIPOS DE PIPES' ? 'red' : 'black'">Pipe Tipo Fecha</h3>
+<div [ngClass]="['cajas']">
+    <!--Para usar la PIPE separamos con el caracter | luego el parametro de fecha-->
+    <p>{{fecha | date:'fullDate'}}</p>
+    <!--O definimos el formato de fecha que queramos dd/MM/yyyy-->
+    <p>{{fecha | date:'dd/MM/yyyy'}}</p>
+</div>
+<br>
+<br>
+<h3 [style.color]="titulo == 'TIPOS DE PIPES' ? 'red' : 'black'">Pipe Tipo Caracter</h3>
+<div [ngClass]="['cajas']">
+    <!--Usamos la PIPE de uppercase o lowercase concatenando con |-->
+    <p>{{fecha | date:'fullDate' | lowercase}}</p>
+    <!--O definimos el formato de fecha que queramos dd/MM/yyyy-->
+    <p>{{lastname | uppercase}}</p>
+</div>
+
+<h3 [style.color]="titulo == 'TIPOS DE PIPES' ? 'red' : 'black'">Pipe Personalizado</h3>
+<div [ngClass]="['cajas']">
+<!--
+    Aqui mostramos la pipe personalizada
+    1. Le pasamos el primer valor de la pipe y luego el segundo que captura el metodo de la pipe
+-->
+{{ 10 | convertidor: 5}}
+</div>

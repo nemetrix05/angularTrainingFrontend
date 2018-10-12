@@ -1,0 +1,13 @@
+<h3 [style.color]="titulo == 'Seccion Nosotros' ? 'red' : 'black'">{{titulo}}</h3>
+<div>{{listas}}</div>
+
+<hr>
+<h4>VALOR QUE PASAMOS POR PARAMETRO</h4>
+<div *ngIf="parametro">
+    <p>Primer parametro por url es: </p> {{parametro}}
+</div>
+<!-- para crear una redireccion, creo un boton y en la directiva (click) llamo un metodo-->
+<div *ngIf="!parametro2">
+    <button type="button" (click)="retornar()">Ir a pagina con parametro</button>
+</div>
+<hr>

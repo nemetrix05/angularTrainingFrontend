@@ -1,0 +1,79 @@
+
+<!--
+    4. Si damos el valor del @Input se toma como una directiva en el selector del componente [nombrepropiedadhijo]
+
+    6. Podemos usar propiedades de la plantilla actual y pasarlas como valor de las propiedades del componente hijo.
+
+    - Output- En la plantilla se llama el evento del componente hijo por medio de (nombrepropiedad), que tiene como objetivo recibir los datos y guardarlos en el componente ´padre.
+-->
+<tag-hijo 
+    [valf] = "arreglo"
+    (desde_aqui) = "getdatos($event)"
+></tag-hijo>
+
+<div *ngIf="resoutput">
+    <h3>Resultado propiedad por output</h3>
+    <p>{{resoutput.texto}}</p>
+</div>
+
+<br>
+<br>
+<br>
+
+<hr>
+<div [style.opacity]="nombre ? '0.4' : '1'">
+
+    <h4>{{nombre | uppercase}}</h4>
+
+ 
+
+    <!--
+        - Primero creamos con el selector ng-template en la plantilla que queremos y damos un #nombredeplantilla antes setear.
+        
+        - En la directiva ngIF=" usamos ; else nombre del ng template"
+
+        - Lo que hace es poner dentro del mismo div el contenido del ng-template
+
+        - Podemos usar el then y else juntos para setear varios divs
+    -->
+
+    <div *ngIf="switch; then Valid else noValid" [ngClass]="['contex']">
+    </div>
+
+    <ng-template #Valid>
+        <h3 style="color:green;">Es <strong>true</strong></h3>
+        <button type="button" (click)="encender(false)">Cambiar</button>
+    </ng-template>
+
+    <ng-template #noValid>
+        <h3 style="color:red;">Es <strong>false</strong></h3>
+        <button type="button" (click)="encender(true)">Cambiar</button>
+    </ng-template>
+
+</div>
+
+
+<!--
+<p><strong>1. Forma clasica dehacer un IF else en angular 2 y 4 Comentada</strong></p>
+
+<hr>
+
+
+    - Usamos ngIF="CONDICION" // Si la condicion es true o no esta null
+    - Usamos ngIF="!CONDICION" // Si la condicion es false o esta vacia con !
+
+
+<div *ngIf="switch" [style.background]="switch ? 'green' : 'white'" [ngClass]="['contex']">
+    Es true valido
+</div>
+
+<div *ngIf="!switch" [style.background]="!switch ? 'red' : 'white'" [ngClass]="['contex']">
+    Es true valido
+</div>
+
+<ul>
+    <li><button type="button" (click)="encender(true)">PRENDER</button></li>
+    <li><button type="button" (click)="apagar(false)">APAGAR</button></li>
+</ul>
+
+-->
